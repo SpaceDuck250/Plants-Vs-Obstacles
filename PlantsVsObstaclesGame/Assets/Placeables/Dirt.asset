@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd3af01a30961a478238dfc2e9d5140, type: 3}
+  m_Name: Dirt
+  m_EditorClassIdentifier: Assembly-CSharp::PlaceableData
+  placeableName: Dirt
+  placePrefab: {fileID: 4988558548290104217, guid: a6db2c0adf90fac4ea40ac457a0a0420, type: 3}
+  possiblePlaceSide: 0

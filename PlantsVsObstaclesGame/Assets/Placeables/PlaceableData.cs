@@ -12,6 +12,6 @@ public class PlaceableData : ScriptableObject
 public enum Direction
 {
     All,
-    TopOnly,
-    SidesOnly
+    Top,
+    Sides
 }

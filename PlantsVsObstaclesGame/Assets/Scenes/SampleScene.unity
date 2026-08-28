@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 857376430}
   - component: {fileID: 857376429}
   - component: {fileID: 857376428}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RandomBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -765,9 +765,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   gridSize: 1
-  cam: {fileID: 0}
-  maxRange: 0
-  placeBlock: {fileID: 0}
+  cam: {fileID: 330585545}
+  maxRange: 100
+  placeBlock: {fileID: 11400000, guid: 99d9315c307d98641b131b1c3f7d30dd, type: 2}
+  placeLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1723558827
 GameObject:
   m_ObjectHideFlags: 0

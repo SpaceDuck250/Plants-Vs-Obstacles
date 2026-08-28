@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 // 1 2 3 4... 2, 4, 6, 8...
@@ -10,6 +11,7 @@ public class PlaceManagerScript : MonoBehaviour
     public float maxRange;
 
     public PlaceableData placeBlock;
+    public LayerMask placeLayer;
 
     private void Update()
     {
@@ -18,31 +20,70 @@ public class PlaceManagerScript : MonoBehaviour
             Ray mouseRay = cam.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hitInfo;
-            if (Physics.Raycast(mouseRay, out hitInfo, maxRange))
+            if (Physics.Raycast(mouseRay, out hitInfo, maxRange, placeLayer))
             {
-                Vector3 hitPoint = OffsetPlacePoint(hitInfo.point, mouseRay.direction);
+                //Vector3 hitPoint = OffsetPlacePoint(hitInfo.point, hitInfo.normal);
+                PlaceInfo snappedPointInfo = SnapPointToGrid(hitInfo);
 
+                PlaceBlock(placeBlock, snappedPointInfo);
             }
         }
     }
 
-    private Vector3 OffsetPlacePoint(Vector3 placePoint, Vector3 rayDirection)
+    private PlaceInfo SnapPointToGrid(RaycastHit hitInfo)
     {
-        Vector3 oppositeVector = -rayDirection.normalized * 0.001f;
+        Vector3 normal = hitInfo.normal;
 
-        Vector3 correctPlacePoint = placePoint + oppositeVector;
+        Vector3 placePosition = hitInfo.collider.transform.position;
 
-        return correctPlacePoint;
+        float x = placePosition.x;
+        float y = placePosition.y;
+        float z = placePosition.z;
+        // (a, b, c)
+        // this one can be (a +- gridSize, b +- gridSize, c+- gridSize) since we want a valid position
+
+        Vector3 snappedPosition = new Vector3(x + (normal.x * gridSize), y + (normal.y * gridSize), z + (normal.z * gridSize));
+        Direction placeDirection = GetDirectionFromNormal(normal);
+
+
+        PlaceInfo placeInfo = new PlaceInfo(snappedPosition, placeDirection);
+
+        return placeInfo;
+
     }
 
-    //private Vector3 SnapPointToGrid(Vector3 placePoint)
-    //{
-    //    // 5.9
-
-    //}
-
-    private void PlaceBlock(PlaceableData placeBlock, Vector3 placePosition)
+    private void PlaceBlock(PlaceableData placeBlock, PlaceInfo placeInfo)
     {
+        if (placeBlock.possiblePlaceSide != Direction.All && placeBlock.possiblePlaceSide != placeInfo.placeDirection)
+        {
+            return;
+        }
 
+        Instantiate(placeBlock.placePrefab, placeInfo.placePosition, Quaternion.identity);
     }
+
+    public Direction GetDirectionFromNormal(Vector3 normal)
+    {
+        if (normal == Vector3.up || normal == -Vector3.up)
+        {
+            return Direction.Top;
+        }
+        else
+        {
+            return Direction.Sides;
+        }
+    }
+}
+
+public struct PlaceInfo
+{
+    public PlaceInfo(Vector3 placePos, Direction placeDir)
+    {
+        placePosition = placePos;
+        placeDirection = placeDir;
+    }
+
+    public Vector3 placePosition;
+    public Direction placeDirection;
+
 }

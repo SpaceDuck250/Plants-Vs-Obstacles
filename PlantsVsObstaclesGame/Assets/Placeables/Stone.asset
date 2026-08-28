@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebd3af01a30961a478238dfc2e9d5140, type: 3}
-  m_Name: Dirt
+  m_Name: Stone
   m_EditorClassIdentifier: Assembly-CSharp::PlaceableData
-  placeableName: Dirt
-  placePrefab: {fileID: 6500120645211994114, guid: 75abc0ba750bb3b4a8107a2f4a603925, type: 3}
+  placeableName: Stone
+  placePrefab: {fileID: 3258247033858679623, guid: e00cbbe3a51e22c4db3cffc36ec5d728, type: 3}
   possiblePlaceSide: 0
   canPlaceOnEverything: 1
   blocksCanPlaceOn: []

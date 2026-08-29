@@ -4,7 +4,7 @@ using UnityEngine;
 // 1 2 3 4... 2, 4, 6, 8...
 public class PlaceManagerScript : MonoBehaviour
 {
-    public float gridSize = 1;
+    public static float gridSize = 1;
 
     public Camera cam;
 

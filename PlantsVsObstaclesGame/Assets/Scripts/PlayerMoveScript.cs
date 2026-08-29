@@ -101,9 +101,9 @@ public class PlayerMoveScript : MonoBehaviour
                 return true;
             }
 
-            rb.AddForce(Vector3.up * 4.8f, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 6f, ForceMode.Impulse);
             destination = hitInfo.collider.transform.position + (Vector3.up * PlaceManagerScript.gridSize);
-            Invoke("SetupMoveToDestination", 0.5f);
+            Invoke("SetupMoveToDestination", 0.45f);
             //OnHopJump?.Invoke();
             return true;
         }

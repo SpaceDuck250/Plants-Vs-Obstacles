@@ -8,15 +8,24 @@ public class HopAnimator : MonoBehaviour
     private void Start()
     {
         playerMove.OnHop += OnHop;
+        playerMove.OnHopJump += OnJump;
     }
 
     private void OnDestroy()
     {
         playerMove.OnHop -= OnHop;
+        playerMove.OnHopJump -= OnJump;
+
     }
 
     public void OnHop()
     {
         playerAnimator.SetTrigger("Hop");
+    }
+
+    private void OnJump()
+    {
+        // will call move function when reached peak
+        playerAnimator.SetTrigger("HopJump");
     }
 }

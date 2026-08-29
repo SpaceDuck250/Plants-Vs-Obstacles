@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dirt
   m_EditorClassIdentifier: Assembly-CSharp::PlaceableData
   placeableName: Dirt
-  placePrefab: {fileID: 6500120645211994114, guid: 75abc0ba750bb3b4a8107a2f4a603925, type: 3}
+  placePrefab: {fileID: 3968396135823902557, guid: 54824a6e086cb714eb664e1f5073e7b5, type: 3}
   possiblePlaceSide: 0
   canPlaceOnEverything: 1
   blocksCanPlaceOn: []

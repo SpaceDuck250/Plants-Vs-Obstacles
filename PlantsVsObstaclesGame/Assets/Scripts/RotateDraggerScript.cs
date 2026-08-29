@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class RotateDraggerScript : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class RotateDraggerScript : MonoBehaviour
     public Transform pivotPoint;
 
     public bool holding = false;
+
+    public event Action OnDraggingScreen;
 
     private void Update()
     {

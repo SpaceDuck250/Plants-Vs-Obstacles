@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stone
   m_EditorClassIdentifier: Assembly-CSharp::PlaceableData
   placeableName: Stone
-  placePrefab: {fileID: 1388533100096097342, guid: ed4ff4dd263d9aa458b2a60dedb2af91, type: 3}
+  placePrefab: {fileID: 7819726767127988803, guid: 440d40dcf622170498a3694fb72e5c65, type: 3}
   possiblePlaceSide: 0
   canPlaceOnEverything: 1
   blocksCanPlaceOn: []

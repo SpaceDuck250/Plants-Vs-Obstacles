@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using static UnityEngine.LightAnchor;
 
 public class PlayerMoveScript : MonoBehaviour
 {
@@ -17,7 +15,9 @@ public class PlayerMoveScript : MonoBehaviour
 
     public float moveCooldownTime;
 
+    [SerializeField]
     private bool reachedDestination = true;
+    [SerializeField]
     private bool moveOnCooldown = false;
 
     public Transform playerModel;
@@ -101,9 +101,10 @@ public class PlayerMoveScript : MonoBehaviour
                 return true;
             }
 
-            rb.AddForce(Vector3.up * 6f, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 7f, ForceMode.Impulse);
             destination = hitInfo.collider.transform.position + (Vector3.up * PlaceManagerScript.gridSize);
-            Invoke("SetupMoveToDestination", 0.45f);
+            //Invoke("SetupMoveToDestination", 0.45f);
+            StartCoroutine(MoveToDestinationWhenReachTop());
             //OnHopJump?.Invoke();
             return true;
         }
@@ -126,6 +127,13 @@ public class PlayerMoveScript : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public IEnumerator MoveToDestinationWhenReachTop()
+    {
+        yield return new WaitUntil(() => (destination.y - transform.position.y) < 0.05f);
+
+        SetupMoveToDestination();
     }
 
     public void SetupMoveToDestination()
@@ -178,6 +186,7 @@ public class PlayerMoveScript : MonoBehaviour
         moveOnCooldown = true;
         yield return new WaitForSeconds(moveCooldownTime);
         moveOnCooldown = false;
+        reachedDestination = true;
     }
 
     // Yes I know y isnt importance

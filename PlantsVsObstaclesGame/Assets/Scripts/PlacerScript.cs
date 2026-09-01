@@ -1,8 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 // 1 2 3 4... 2, 4, 6, 8...
-public class PlaceManagerScript : MonoBehaviour
+public class PlacerScript : MonoBehaviour
 {
     public static float gridSize = 1;
 
@@ -13,8 +13,17 @@ public class PlaceManagerScript : MonoBehaviour
     public PlaceableData placeBlock;
     public LayerMask placeLayer;
 
+    public event Action<PlaceableData> OnPlacedBlock;
+
+    public bool canPlace = true;
+
     private void Update()
     {
+        if (!canPlace)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray mouseRay = cam.ScreenPointToRay(Input.mousePosition);
@@ -54,12 +63,19 @@ public class PlaceManagerScript : MonoBehaviour
 
     private void PlaceBlock(PlaceableData placeBlock, PlaceInfo placeInfo)
     {
+        if (placeBlock == null)
+        {
+            return;
+        }
+
         if (placeBlock.possiblePlaceSide != Direction.All && placeBlock.possiblePlaceSide != placeInfo.placeDirection)
         {
             return;
         }
 
         Instantiate(placeBlock.placePrefab, placeInfo.placePosition, Quaternion.identity);
+
+        OnPlacedBlock?.Invoke(placeBlock);
     }
 
     public Direction GetDirectionFromNormal(Vector3 normal)

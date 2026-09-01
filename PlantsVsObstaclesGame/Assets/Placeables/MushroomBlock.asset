@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd3af01a30961a478238dfc2e9d5140, type: 3}
   m_Name: MushroomBlock
   m_EditorClassIdentifier: Assembly-CSharp::PlaceableData
-  placeableName: 
+  placeableName: Mushroom
+  placeAbleSprite: {fileID: 21300000, guid: 4952db25050482948b5952addc2440c4, type: 3}
   placePrefab: {fileID: 6128208753229369732, guid: 670567bdff08fc84da5206bf0e2b6f71, type: 3}
   possiblePlaceSide: 0
   canPlaceOnEverything: 0

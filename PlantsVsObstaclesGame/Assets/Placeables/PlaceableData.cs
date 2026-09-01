@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlaceableData : ScriptableObject
 {
     public string placeableName;
+    public Sprite placeAbleSprite;
     public GameObject placePrefab;
 
     public Direction possiblePlaceSide;

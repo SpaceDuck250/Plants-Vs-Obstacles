@@ -46,27 +46,27 @@ public class PlayerMoveScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             //Vector3 up = new Vector3(0, 0, PlaceManagerScript.gridSize);
-            Vector3 up = GiveRoundedVector(camParent.forward) * PlaceManagerScript.gridSize;
+            Vector3 up = GiveRoundedVector(camParent.forward) * PlacerScript.gridSize;
 
             Hop(up);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             //Vector3 down = new Vector3(0, 0, -PlaceManagerScript.gridSize);
-            Vector3 down = -GiveRoundedVector(camParent.forward) * PlaceManagerScript.gridSize;
+            Vector3 down = -GiveRoundedVector(camParent.forward) * PlacerScript.gridSize;
 
             Hop(down);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Vector3 left = -GiveRoundedVector(camParent.right) * PlaceManagerScript.gridSize;
+            Vector3 left = -GiveRoundedVector(camParent.right) * PlacerScript.gridSize;
 
             Hop(left);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             //Vector3 right = new Vector3(PlaceManagerScript.gridSize, 0, 0);
-            Vector3 right = GiveRoundedVector(camParent.right) * PlaceManagerScript.gridSize;
+            Vector3 right = GiveRoundedVector(camParent.right) * PlacerScript.gridSize;
 
             Hop(right);
         }
@@ -102,7 +102,7 @@ public class PlayerMoveScript : MonoBehaviour
             }
 
             rb.AddForce(Vector3.up * 7f, ForceMode.Impulse);
-            destination = hitInfo.collider.transform.position + (Vector3.up * PlaceManagerScript.gridSize);
+            destination = hitInfo.collider.transform.position + (Vector3.up * PlacerScript.gridSize);
             //Invoke("SetupMoveToDestination", 0.45f);
             StartCoroutine(MoveToDestinationWhenReachTop());
             //OnHopJump?.Invoke();

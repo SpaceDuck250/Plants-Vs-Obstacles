@@ -32,12 +32,12 @@ public class RotateDraggerScript : MonoBehaviour
 
     private void CheckIfHoldingMouse()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             holding = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             holding = false;
         }
